@@ -256,6 +256,9 @@ class TestListenerHook:
 class TestXForwardedFor:
     def _make_app(self, tmp_path):
         cfg = tmp_path / "xff.yaml"
+        # Use POSIX-style path with forward slashes to avoid YAML escape issues
+        # on Windows (where backslashes trigger \U, \x, \u escape sequences).
+        tps = tmp_path.as_posix()
         cfg.write_text(f"""
 waf:
   enabled: true
@@ -271,8 +274,8 @@ waf:
   logging:
     enabled: true
     console: false
-    log_file: "{tmp_path}/test.log"
-    db_file: "{tmp_path}/test.db"
+    log_file: {tps}/test.log
+    db_file: {tps}/test.db
 """)
         app = Flask(__name__)
 
@@ -310,6 +313,7 @@ waf:
     def test_xff_with_single_ip(self, tmp_path):
         app = Flask(__name__)
         cfg = tmp_path / "xff.yaml"
+        tps = tmp_path.as_posix()
         cfg.write_text(f"""
 waf:
   enabled: true
@@ -325,8 +329,8 @@ waf:
   logging:
     enabled: true
     console: false
-    log_file: "{tmp_path}/test.log"
-    db_file: "{tmp_path}/test.db"
+    log_file: {tps}/test.log
+    db_file: {tps}/test.db
 """)
         @app.route('/')
         def index():
@@ -350,6 +354,7 @@ waf:
 class TestWhitelistSemantics:
     def _make_app(self, tmp_path, paths):
         cfg = tmp_path / "wl.yaml"
+        tps = tmp_path.as_posix()
         cfg.write_text(f"""
 waf:
   enabled: true
@@ -366,8 +371,8 @@ waf:
   logging:
     enabled: true
     console: false
-    log_file: "{tmp_path}/test.log"
-    db_file: "{tmp_path}/test.db"
+    log_file: {tps}/test.log
+    db_file: {tps}/test.db
 """)
         app = Flask(__name__)
 

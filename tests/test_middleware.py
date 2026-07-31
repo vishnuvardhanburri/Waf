@@ -18,7 +18,9 @@ from waf import PyWAF
 @pytest.fixture
 def app(tmp_path):
     """Create a Flask test app with PyWAF attached."""
-    # Write a test config with small rate limit for testing
+    # Write a test config with small rate limit for testing.
+    # Use POSIX-style paths (forward slashes) to keep YAML portable on Windows.
+    tps = tmp_path.as_posix()
     config_file = tmp_path / "test_config.yaml"
     config_file.write_text(f"""
 waf:
@@ -39,8 +41,8 @@ waf:
   logging:
     enabled: true
     console: false
-    log_file: "{tmp_path}/test_waf.log"
-    db_file: "{tmp_path}/test_waf.db"
+    log_file: {tps}/test_waf.log
+    db_file: {tps}/test_waf.db
     level: INFO
   dashboard:
     enabled: false
