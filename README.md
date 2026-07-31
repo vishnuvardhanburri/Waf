@@ -1,5 +1,6 @@
 # 🛡️ PyWAF
 
+[![Tests](https://github.com/vishnuvardhanburri/Waf/actions/workflows/tests.yml/badge.svg)](https://github.com/vishnuvardhanburri/Waf/actions/workflows/tests.yml)
 ![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)
 ![Flask](https://img.shields.io/badge/flask-%3E%3D2.3.0-lightgrey.svg)
 ![License MIT](https://img.shields.io/badge/license-MIT-green.svg)
