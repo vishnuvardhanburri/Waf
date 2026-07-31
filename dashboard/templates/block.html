@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Access Denied | PyWAF</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #0a0e1a;
+            --card-bg: rgba(15, 23, 42, 0.8);
+            --danger: #ff3b5c;
+            --text-primary: #e2e8f0;
+            --text-secondary: #94a3b8;
+            --border: rgba(255, 59, 92, 0.3);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(255, 59, 92, 0.1) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(0, 212, 255, 0.05) 0px, transparent 50%);
+            color: var(--text-primary);
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .block-container {
+            background: var(--card-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 40px;
+            max-width: 600px;
+            width: 100%;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5), 0 0 40px rgba(255, 59, 92, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .block-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #ff3b5c, #ff7b00);
+        }
+
+        .header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+            gap: 15px;
+        }
+
+        .icon-shield {
+            font-size: 40px;
+            filter: drop-shadow(0 0 10px rgba(255, 59, 92, 0.5));
+        }
+
+        h1 {
+            font-size: 28px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .message {
+            font-size: 16px;
+            line-height: 1.6;
+            color: var(--text-secondary);
+            margin-bottom: 30px;
+        }
+
+        .details-box {
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+
+        .detail-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 12px;
+            align-items: center;
+        }
+
+        .detail-row:last-child {
+            margin-bottom: 0;
+        }
+
+        .detail-label {
+            color: var(--text-secondary);
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .detail-value {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 14px;
+            color: var(--text-primary);
+            background: rgba(255, 255, 255, 0.05);
+            padding: 4px 10px;
+            border-radius: 4px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .threat-badge {
+            background: rgba(255, 59, 92, 0.1);
+            color: var(--danger);
+            border: 1px solid rgba(255, 59, 92, 0.3);
+            font-weight: 600;
+        }
+
+        .footer {
+            font-size: 13px;
+            color: var(--text-secondary);
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding-top: 20px;
+        }
+
+        .footer span {
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+    <div class="block-container">
+        <div class="header">
+            <span class="icon-shield">🛑</span>
+            <h1>Access Denied</h1>
+        </div>
+        
+        <div class="message">
+            Your request has been blocked by the <strong>PyWAF Security Engine</strong> because it matches a known malicious signature or security policy violation.
+        </div>
+
+        <div class="details-box">
+            <div class="detail-row">
+                <span class="detail-label">Reference ID</span>
+                <span class="detail-value">{{ reference }}</span>
+            </div>
+            <div class="detail-row">
+                <span class="detail-label">Threat Type</span>
+                <span class="detail-value threat-badge">{{ threat_type }}</span>
+            </div>
+            <div class="detail-row">
+                <span class="detail-label">Your IP Address</span>
+                <span class="detail-value">{{ client_ip }}</span>
+            </div>
+        </div>
+
+        <div class="footer">
+            Protected by <span>PyWAF Engine</span> • If you believe this is a false positive, please contact the site administrator with your Reference ID.
+        </div>
+    </div>
+</body>
+</html>

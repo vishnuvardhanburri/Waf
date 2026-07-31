@@ -1,0 +1,33 @@
+waf:
+  enabled: true
+  mode: "block"     # block | monitor | off
+  sensitivity: "standard"  # strict | standard | permissive
+
+  rate_limit:
+    enabled: true
+    max_requests: 100
+    window_seconds: 60
+
+  whitelist:
+    paths:
+      - "/health"
+      - "/metrics"
+      - "/favicon.ico"
+      - "/waf/"  # Dashboard paths
+    ips: []
+
+  blacklist:
+    ips: []
+
+  logging:
+    console: true
+    file: "logs/waf_events.log"
+    database: "logs/waf_events.db"
+    level: "INFO"
+    max_events: 10000
+
+  dashboard:
+    enabled: true
+    path: "/waf/dashboard"
+
+  custom_rules: []

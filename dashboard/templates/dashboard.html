@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="PyWAF Real-Time Web Application Firewall Monitoring Dashboard">
+    <title>PyWAF - Security Dashboard</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/static/css/dashboard.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- HEADER -->
+        <header class="dashboard-header glass-panel">
+            <div class="header-left">
+                <div class="logo">
+                    <span class="icon">🛡️</span>
+                    <h1 class="gradient-text">PyWAF</h1>
+                </div>
+                <div class="status-indicator">
+                    <div class="dot pulse-green" id="waf-status-dot"></div>
+                    <span id="waf-status-text">ACTIVE</span>
+                </div>
+                <div class="mode-badge badge-block" id="waf-mode-badge">BLOCK</div>
+            </div>
+            
+            <div class="header-right">
+                <div class="sse-status" id="sse-status">
+                    <div class="dot pulse-blue" id="sse-dot"></div>
+                    <span id="sse-text">Connecting...</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- STATS ROW -->
+        <section class="stats-row">
+            <div class="stat-card glass-panel glow-cyan">
+                <h3>Total Requests</h3>
+                <div class="stat-value" id="stat-total-reqs">0</div>
+            </div>
+            <div class="stat-card glass-panel glow-red">
+                <h3>Blocked Requests</h3>
+                <div class="stat-value text-danger" id="stat-blocked-reqs">0</div>
+                <div class="stat-subtitle text-danger" id="stat-blocked-pct">0%</div>
+            </div>
+            <div class="stat-card glass-panel glow-cyan">
+                <h3>Requests / Min</h3>
+                <div class="stat-value" id="stat-reqs-min">0</div>
+            </div>
+            <div class="stat-card glass-panel glow-cyan">
+                <h3>Active Rules</h3>
+                <div class="stat-value" id="stat-active-rules">0</div>
+            </div>
+        </section>
+
+        <!-- MAIN CONTENT -->
+        <main class="main-content">
+            <!-- LEFT COLUMN (60%) -->
+            <div class="feed-column">
+                <div class="glass-panel feed-panel">
+                    <div class="panel-header">
+                        <h2>Live Event Feed</h2>
+                    </div>
+                    <div class="table-container">
+                        <table class="events-table">
+                            <thead>
+                                <tr>
+                                    <th>Timestamp</th>
+                                    <th>IP Address</th>
+                                    <th>Method</th>
+                                    <th>Path</th>
+                                    <th>Threat</th>
+                                    <th>Action</th>
+                                    <th>Payload</th>
+                                </tr>
+                            </thead>
+                            <tbody id="events-tbody">
+                                <!-- Events will be injected here via JS -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RIGHT COLUMN (40%) -->
+            <div class="charts-column">
+                <div class="glass-panel chart-panel">
+                    <h2>Threat Distribution</h2>
+                    <div class="chart-container">
+                        <canvas id="threatDistributionChart"></canvas>
+                    </div>
+                </div>
+                
+                <div class="glass-panel chart-panel">
+                    <h2>Top Attacking IPs</h2>
+                    <div class="chart-container">
+                        <canvas id="topIPsChart"></canvas>
+                    </div>
+                </div>
+                
+                <div class="glass-panel chart-panel">
+                    <h2>Attacks Timeline (Last Hour)</h2>
+                    <div class="chart-container">
+                        <canvas id="timelineChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- FOOTER -->
+        <footer class="dashboard-footer glass-panel">
+            <div class="footer-info">
+                <span>PyWAF Monitoring Station</span>
+                <span class="divider">|</span>
+                <span id="connection-info">Live Stream Active</span>
+            </div>
+            <div class="footer-actions">
+                <button class="btn btn-outline" id="btn-export-csv">Export CSV</button>
+                <button class="btn btn-outline" id="btn-export-json">Export JSON</button>
+                <button class="btn btn-danger" id="btn-clear-events">Clear Events</button>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Custom JS -->
+    <script src="/static/js/dashboard.js"></script>
+</body>
+</html>
