@@ -4,6 +4,7 @@
 ![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)
 ![Flask](https://img.shields.io/badge/flask-%3E%3D2.3.0-lightgrey.svg)
 ![License MIT](https://img.shields.io/badge/license-MIT-green.svg)
+[![OpenSSF Best Practices](https://www.bestpractices.dev/projects/14045/badge)](https://www.bestpractices.dev/en/projects/14045)
 
 PyWAF is a plug-and-play Web Application Firewall middleware for Flask applications. It provides real-time detection and blocking of common web vulnerabilities including SQL Injection, Cross-Site Scripting (XSS), Path Traversal, and Command Injection, along with a real-time monitoring dashboard.
 
