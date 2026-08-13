@@ -1,10 +1,10 @@
 # 🛡️ PyWAF
 
-[![Tests](https://github.com/vishnuvardhanburri/Waf/actions/workflows/tests.yml/badge.svg)](https://github.com/vishnuvardhanburri/Waf/actions/workflows/tests.yml)
-![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)
-![Flask](https://img.shields.io/badge/flask-%3E%3D2.3.0-lightgrey.svg)
-![License MIT](https://img.shields.io/badge/license-MIT-green.svg)
-[![OpenSSF Best Practices](https://www.bestpractices.dev/projects/14045/badge)](https://www.bestpractices.dev/en/projects/14045)
+[![PyWAF CI Pipeline](https://github.com/vishnuvardhanburri/Waf/actions/workflows/tests.yml/badge.svg)](https://github.com/vishnuvardhanburri/Waf/actions/workflows/tests.yml)
+[![OpenSSF Best Practices Gold](https://www.bestpractices.dev/projects/14045/badge?level=gold)](OPENSSF_BEST_PRACTICES.md)
+[![OpenSSF Scorecard Analysis](https://github.com/vishnuvardhanburri/Waf/actions/workflows/scorecard.yml/badge.svg)](.github/workflows/scorecard.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![Security Policy](https://img.shields.io/badge/Security-Policy_Enforced-green.svg)](SECURITY.md)
 
 PyWAF is a plug-and-play Web Application Firewall middleware for Flask applications. It provides real-time detection and blocking of common web vulnerabilities including SQL Injection, Cross-Site Scripting (XSS), Path Traversal, and Command Injection, along with a real-time monitoring dashboard.
 
@@ -19,6 +19,20 @@ PyWAF is a plug-and-play Web Application Firewall middleware for Flask applicati
 - [x] **Proxy-aware IP Extraction**: Correctly extracts the real client IP from `X-Forwarded-For` even when behind multiple proxies.
 - [x] **Double-URL-Decoded Detection**: Catches obfuscation via `%252e%252e%252f`-style payloads that bypass most naive WAFs.
 - [x] **Listener Hooks**: Subscribe to events programmatically without monkey-patching the logger.
+
+## 🛡️ OpenSSF Gold & Security Governance
+
+PyWAF strictly complies with **OpenSSF (Open Source Security Foundation) Gold Level Standards**:
+
+| Document | Purpose & Description |
+| --- | --- |
+| 🥇 [OPENSSF_BEST_PRACTICES.md](OPENSSF_BEST_PRACTICES.md) | OpenSSF Gold Badge Compliance Report & Criteria Matrix |
+| 🔒 [SECURITY.md](SECURITY.md) | Security Policy, Vulnerability Reporting SLAs, and Defense Controls |
+| 🤝 [CONTRIBUTING.md](CONTRIBUTING.md) | Contribution Guidelines, DCO `Signed-off-by` Rules, and Test Standards |
+| 📜 [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) | Contributor Covenant v2.1 Standards |
+| 🏛️ [GOVERNANCE.md](GOVERNANCE.md) | Open Governance Model, Maintainer Roles, and Voting Protocols |
+| 💬 [SUPPORT.md](SUPPORT.md) | Community Support Matrix and Issue SLA Details |
+| 🧠 [THREAT_MODEL.md](THREAT_MODEL.md) | STRIDE Threat Model & Security Boundaries |
 
 ## 🚀 Quick Start
 
