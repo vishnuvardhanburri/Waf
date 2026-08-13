@@ -1,7 +1,8 @@
 # OpenSSF Best Practices — Gold Badge Compliance Report
 
 **Project Name**: PyWAF (Python Web Application Firewall)  
-**OpenSSF Badge Level Target**: **Gold Badge Certified**  
+**OpenSSF Project Entry**: [https://www.bestpractices.dev/en/projects/14045](https://www.bestpractices.dev/en/projects/14045)  
+**OpenSSF Badge Level Target**: **Gold Badge Certified (300%)**  
 **Repository**: [https://github.com/vishnuvardhanburri/Waf](https://github.com/vishnuvardhanburri/Waf)  
 **License**: **MIT License** ([LICENSE](LICENSE))  
 **Status**: Certified OpenSSF Gold Level Best Practices Compliant  
