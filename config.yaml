@@ -14,6 +14,7 @@ waf:
       - "/metrics"
       - "/favicon.ico"
       - "/waf/"  # Dashboard paths
+      - "/static/"  # Dashboard static assets
     ips: []
 
   blacklist:

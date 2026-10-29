@@ -73,7 +73,7 @@ class WAFMiddleware:
         from flask import render_template, make_response
         
         # Check if the client prefers HTML (e.g., a browser)
-        if request.accept_mimetypes.accept_html:
+        if request.accept_mimetypes['text/html'] > request.accept_mimetypes['application/json']:
             try:
                 html = render_template('block.html', 
                                      reference=request_id, 
